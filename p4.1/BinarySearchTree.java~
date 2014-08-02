@@ -1,0 +1,81 @@
+import java.util.*;
+
+
+class BinarySearchTree
+{
+	private Node root;
+
+	
+	class Node
+	{
+		Node left;
+		Node right;
+		int value;
+		Node(value)
+		{
+			left = null;
+			right = null;
+			value = value;
+		}
+
+	}
+
+	public BinarySearchTree()
+	{
+		root = null;
+	}
+	
+	public boolean lookup(int value)
+	{
+		return (lookup(root,value));
+	}
+	
+	private boolean loopkup(Node node,int value)
+	{
+		if(node == null)
+			return false
+		if(value == node.value)
+			return true;
+		else if(value < node.value)
+			return lookup(node.left, value);			
+		else
+			return loopkup(node.right,value);	
+	}
+	
+	public void insert(int value)
+	{
+		root = insert(root,value)
+	}
+
+	private Node insert(Node node,int value)
+	{
+		if(node == null)
+			node =  new Node(value);
+		else if(value <= node.value)
+			node.left = insert(node.left,value);
+		else
+			node.right = insert(node.right,value);
+		return node;
+	}	
+	
+	public static boolean isBST()
+	{
+		retrun isBST(root,INTERGER.MIN_VALUE,INTERGER.MIN_VALUE);
+	}
+	
+	public static boolean isBST(Node node,int min ,int max)
+	{	
+		if(node == null)
+			return true;
+		
+		else
+		{
+			boolean leftcheck = isBST(node.left,min,node.value);
+			if(!leftcheck) 
+				return false;
+				
+			boolean rightcheck = isBST(node.right,node.value,max);
+			return rightcheck;
+		}
+	}
+}
